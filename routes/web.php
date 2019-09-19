@@ -11,6 +11,12 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return response()->success();
 });
+
+
+Route::get('/admin/person/search','Admin\AdminPersonOperateController@searchPersonalUser');
+
