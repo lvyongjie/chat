@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    //
+    protected $table = 'chat_user';
+    protected $guarded = [];
+    public $timestamps = false;
 }
