@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminCustomerRequest;
+use App\Http\Requests\Admin\AdminCustomerRequest;
+use App\Http\Requests\Admin\CompanyIdRequest;
+use App\Http\Requests\Admin\CustomerIdRequest;
 use App\Models\User;
 
 class AdminCustomerController extends Controller
 {
-    public function getAllCustomersByCompanyId(Request $request)
+    public function getAllCustomersByCompanyId(CompanyIdRequest $request)
     {
         $id = $request->get('company_id');
         $data = User::where('type', $id)->paginate(8);
@@ -17,7 +19,7 @@ class AdminCustomerController extends Controller
         return response()->json($result);
     }
 
-    public function getCustomerInfoByCustomerId(Request $request)
+    public function getCustomerInfoByCustomerId(CustomerIdRequest $request)
     {
         $id = $request->get('customer_id');
         $data = User::where('id', $id)->first();
@@ -53,7 +55,7 @@ class AdminCustomerController extends Controller
         }
         return response()->json($result);
     }
-    public function deleteCustomer(Request $request)
+    public function deleteCustomer(CustomerIdRequest $request)
     {
         $id = $request->get('customer_id');
         $vis = User::where('id', $id)->delete();

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminCompanyOperateRequest;
+use App\Http\Requests\Admin\AdminCompanyOperateRequest;
+use App\Http\Requests\Admin\CompanyIdRequest;
+use App\Http\Requests\Admin\CustomerIdRequest;
 use App\Models\Company;
 use App\Models\User;
 
@@ -44,7 +46,7 @@ class AdminCompanyOperateController extends Controller
 
         return response()->json($result);
     }
-    public function deleteCompanyByCompanyId(Request $request)
+    public function deleteCompanyByCompanyId(CompanyIdRequest $request)
     {
         $id = $request->get('company_id');
         
