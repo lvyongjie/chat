@@ -19,4 +19,7 @@ Route::get('/', function () {
 
 
 Route::get('/admin/person/search','Admin\AdminPersonOperateController@searchPersonalUser');
+Route::get('/admin/person','Admin\AdminPersonOperateController@getAllPersonalUser');
+Route::post('/admin/person','Admin\AdminPersonOperateController@addPersonalUser');
+Route::post('/admin/person/state/update','Admin\AdminPersonOperateController@updatePersonalUserByUserId');
 
