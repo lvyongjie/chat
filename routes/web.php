@@ -11,9 +11,18 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return response()->success();
 });
+
+
+Route::get('/admin/person/search','Admin\AdminPersonOperateController@searchPersonalUser');
+Route::get('/admin/person','Admin\AdminPersonOperateController@getAllPersonalUser');
+Route::post('/admin/person','Admin\AdminPersonOperateController@addPersonalUser');
+Route::post('/admin/person/state/update','Admin\AdminPersonOperateController@updatePersonalUserByUserId');
+
 
 
 
@@ -29,10 +38,6 @@ Route::post('/admin/questions/access','Admin\AdminQuestionOperateController@acce
 Route::post('/admin/questions/revoke','Admin\AdminQuestionOperateController@revokeQuestionByQuestionId');
 //删除问题
 Route::delete('/admin/questions','Admin\AdminQuestionOperateController@deleteQuestionByQuestionId');
-
-
-
-
 //更新图片
 Route::post('/picture/updatepicture','Picture\PictureUpdateController@updatePicture');
 
