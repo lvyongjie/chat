@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return response()->success();
-});
-
 
 
 //搜索问题
@@ -35,8 +31,11 @@ Route::delete('/admin/questions','Admin\AdminQuestionOperateController@deleteQue
 
 //更新图片
 Route::post('/picture/updatepicture','Picture\PictureUpdateController@updatePicture');
-
+//输出图片
 Route::GET('/picture/showpicture/{name}','Picture\PictureUpdateController@showPicture');
+
+
+
 
 
 

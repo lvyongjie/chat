@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\AccessQuestionByQuestionIdRequest;
+use App\Http\Requests\DeleteQuestionByQuestionIdRequest;
+use App\Http\Requests\GetQuestionDetailByQuestionIdRequest;
+use App\Http\Requests\RevokeQuestionByQuestionIdRequest;
+use App\Http\Requests\SearchQuestionRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\RobotExtraQa;
@@ -10,7 +15,7 @@ use DB;
 class AdminQuestionOperateController extends Controller
 {
     //搜索问题
-    public function searchQuestion(Request $request){
+    public function searchQuestion(SearchQuestionRequest $request){
         $content = $request->search_content;
         //三表联合查询
         $result = DB::table('chat_robot_extra_qa')
@@ -47,7 +52,7 @@ class AdminQuestionOperateController extends Controller
     }
 
     //通过id获取信息
-    public function getQuestionDetailByQuestionId(Request $request){
+    public function getQuestionDetailByQuestionId(GetQuestionDetailByQuestionIdRequest $request){
         $question_id = $request->question_id;
         $result = DB::table('chat_robot_extra_qa')
             ->select('title as intro','synopsis as intro',
@@ -63,7 +68,7 @@ class AdminQuestionOperateController extends Controller
     }
 
     //通过审核
-    public function accessQuestionByQuestionId(Request $request){
+    public function accessQuestionByQuestionId(AccessQuestionByQuestionIdRequest $request){
         $question_id = $request->question_id;
         $stat = RobotExtraQa::where('id','=',$question_id)->first();
         if($stat){
@@ -81,7 +86,7 @@ class AdminQuestionOperateController extends Controller
     }
 
     //取消通过审核
-    public function revokeQuestionByQuestionId(Request $request){
+    public function revokeQuestionByQuestionId(RevokeQuestionByQuestionIdRequest $request){
         $question_id = $request->question_id;
         $stat = RobotExtraQa::where('id','=',$question_id)->first();
         if($stat){
@@ -99,7 +104,7 @@ class AdminQuestionOperateController extends Controller
     }
 
     //删除问题
-    public function deleteQuestionByQuestionId(Request $request){
+    public function deleteQuestionByQuestionId(DeleteQuestionByQuestionIdRequest $request){
         $question_id = $request->question_id;
         $stat = RobotExtraQa::where('id','=',$question_id)->first();
         if($stat){

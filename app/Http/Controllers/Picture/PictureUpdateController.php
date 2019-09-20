@@ -3,18 +3,27 @@
 namespace App\Http\Controllers\Picture;
 
 use App\Http\Requests\PictureRequest;
+use App\Http\Requests\ShowPictureRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class PictureUpdateController extends Controller
 {
-    public function showPicture(Request $request){
-        $path = storage_path('/uploads/'.$request->url);
-        return response()->file($path);
+
+    //输出图片
+    public function showPicture(ShowPictureRequest $request){
+        $path = storage_path('/uploads/'.$request->name);
+        if(is_file($path)){
+            return response()->file($path);
+        }
+        else{
+            return response()->fail(100,'图片输出失败！',null);
+        }
     }
 
 
+    //上传图片
     public function updatePicture(PictureRequest $request){
             $picture = $request->file('picture');
             if($picture->isValid()){
