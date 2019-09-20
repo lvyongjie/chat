@@ -17,6 +17,16 @@ Route::get('/', function () {
     return response()->success();
 });
 
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('company', 'Admin\AdminCompanyOperateController@getAllCompany');
+    Route::post('company', 'Admin\AdminCompanyOperateController@addCompany');
+    Route::delete('company', 'Admin\AdminCompanyOperateController@deleteCompanyByCompanyId');
+
+    Route::get('customer', 'Admin\AdminCustomerController@getAllCustomersByCompanyId');
+    Route::get('customer/detail', 'Admin\AdminCustomerController@getCustomerInfoByCustomerId');
+    Route::post('customer', 'Admin\AdminCustomerController@addCustomer');
+    Route::delete('customer', 'Admin\AdminCustomerController@deleteCustomer');
+});
 
 Route::get('/admin/person/search','Admin\AdminPersonOperateController@searchPersonalUser');
 Route::get('/admin/person','Admin\AdminPersonOperateController@getAllPersonalUser');
@@ -42,7 +52,6 @@ Route::delete('/admin/questions','Admin\AdminQuestionOperateController@deleteQue
 Route::post('/picture/updatepicture','Picture\PictureUpdateController@updatePicture');
 
 Route::GET('/picture/showpicture/{name}','Picture\PictureUpdateController@showPicture');
-
 
 
 

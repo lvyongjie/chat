@@ -22,7 +22,4 @@ class User extends Model
     public $timestamps = false;
     //设置允许写入的字段
     protected $fillable = ['cname','status','password','type','tel','created_at',];
-
-
-
 }
