@@ -26,10 +26,10 @@ class PictureUpdateController extends Controller
                 $name = uniqid().time().'.'.$extend;
                 $stat = Storage::disk('admin')->put($name,file_get_contents($path));
                 if($stat){
-                   return response()->success(100,'成功',$name);
+                   return response()->success(100,'添加成功！',$name);
                 }
                 else{
-                    return response()->fail(200,'失败');
+                    return response()->fail(200,'添加失败，请重试！',null);
                 }
             }
        }
