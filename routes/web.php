@@ -13,9 +13,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return response()->success();
-});
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('company', 'Admin\AdminCompanyOperateController@getAllCompany');
@@ -27,6 +24,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('customer', 'Admin\AdminCustomerController@addCustomer');
     Route::delete('customer', 'Admin\AdminCustomerController@deleteCustomer');
 });
+
+
 
 Route::get('/admin/person/search','Admin\AdminPersonOperateController@searchPersonalUser');
 Route::get('/admin/person','Admin\AdminPersonOperateController@getAllPersonalUser');
@@ -50,9 +49,8 @@ Route::post('/admin/questions/revoke','Admin\AdminQuestionOperateController@revo
 Route::delete('/admin/questions','Admin\AdminQuestionOperateController@deleteQuestionByQuestionId');
 //更新图片
 Route::post('/picture/updatepicture','Picture\PictureUpdateController@updatePicture');
-
+//输出图片
 Route::GET('/picture/showpicture/{name}','Picture\PictureUpdateController@showPicture');
-
 
 
 
