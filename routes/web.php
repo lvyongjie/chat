@@ -29,3 +29,14 @@ Route::group(['middleware' => ['login']],function(){
 	Route::get('/companys/{id}' , 'User\LoginController@getCompanysInfo');//获取指定企业信息
 });
 
+//Route::get('/', function () {
+//    return response()->success();
+//});
+//获取短信接口
+Route::get('/admin/other/sms','Admin\AdminOtherSettingController@getSmsInfo');
+//修改短信接口
+Route::post('/admin/other/sms','Admin\AdminOtherSettingController@updateSmsInfo');
+//获取ws地址
+Route::get('/admin/other/ws','Admin\AdminOtherSettingController@getWsInfo');
+//修改ws地址
+Route::post('/admin/other/ws','Admin\AdminOtherSettingController@updateWsInfo');

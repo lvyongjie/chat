@@ -10,4 +10,5 @@ class Company extends Model//企业表
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded=[];
+
 }

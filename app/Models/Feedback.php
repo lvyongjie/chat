@@ -10,4 +10,5 @@ class Feedback extends Model//意见反馈表
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded=[];
+
 }
