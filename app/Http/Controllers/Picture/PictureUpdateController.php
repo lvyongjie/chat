@@ -7,13 +7,14 @@ use App\Http\Requests\ShowPictureRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class PictureUpdateController extends Controller
 {
 
     //输出图片
-    public function showPicture(ShowPictureRequest $request){
-        $path = storage_path('/uploads/'.$request->name);
+    public function showPicture($name){
+        $path = storage_path('/uploads/'.$name);
         if(is_file($path)){
             return response()->file($path);
         }

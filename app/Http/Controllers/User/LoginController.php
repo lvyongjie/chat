@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
@@ -35,7 +35,7 @@ class LoginController extends Controller
       }else{
          $data = [
             'msg' => '没有该企业！',
-         ]; 
+         ];
          return response()->fail(100,'失败!',$data);
       }
    }
@@ -66,7 +66,7 @@ class LoginController extends Controller
             ];
             return response()->success(200,'成功!',$data);
          }
-         
+
       }else{
          $data=Auth::guard('web');
          return response()->fail(100,'失败!',null);
@@ -114,7 +114,7 @@ class LoginController extends Controller
             return response()->fail(100,'验证码错误!',$data);
           }
       }
-     
+
    }
    //找回密码
    public function uploadPassword(uploadPasswords $Request){
@@ -133,7 +133,7 @@ class LoginController extends Controller
           'code'=>'验证码错误!',
         ];
         return response()->fail(100,'验证码错误!',$data);
-      }  
+      }
       }else{
         $data = [
           'code'=>'用户不存正!',
@@ -193,7 +193,7 @@ class LoginController extends Controller
    }
 
    public function suggestReturn(LoginPost $request){
-   	$input = Input::all(); 
+   	$input = Input::all();
       if(User::where('id',$input['personId'])->exists()&&Company::where('id',$input['companyId'])->exists()&&$input['suggestion']!=NULL){
       $user = new Feedback();
       $user-> content  = $input['suggestion'];
@@ -220,7 +220,7 @@ class LoginController extends Controller
          return response()->fail(100,'提交失败，请稍后重试！', $data);
       }
 
-     
+
 
    }
      /**
@@ -239,4 +239,3 @@ class LoginController extends Controller
      }
 
 }
-

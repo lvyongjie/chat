@@ -47,7 +47,7 @@ class AdminOtherSettingController extends Controller
     	$set->ws_url=$data;
     	$set->save();
     	$array['other_ws_address']=$data;
-    
+
     	return response()->success(200,"成功",$array);
     }
 

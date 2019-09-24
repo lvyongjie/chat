@@ -31,7 +31,7 @@ class AdminQuestionOperateController extends Controller
         else{
             return response()->fail(100,'搜索信息不存在，请重试！',null);
         }
-        
+
     }
 
     //获取全部问题
@@ -55,7 +55,7 @@ class AdminQuestionOperateController extends Controller
     public function getQuestionDetailByQuestionId(GetQuestionDetailByQuestionIdRequest $request){
         $question_id = $request->question_id;
         $result = DB::table('chat_robot_extra_qa')
-            ->select('title as intro','synopsis as intro',
+            ->select('title','synopsis as intro',
                 'step as methed', 'matter_need_atten as careful')
             ->where('id','=',$question_id)->get();
         if($result){

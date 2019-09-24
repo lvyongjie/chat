@@ -13,5 +13,3 @@ class User extends Model//用户表
     public $timestamps = false;
     protected $guarded=[];
 }
-
-
