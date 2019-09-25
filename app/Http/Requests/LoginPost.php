@@ -31,8 +31,8 @@ class LoginPost extends FormRequest
 
     public function massages(){
         return [
-            'suggestion.required' => '意见不能为空',
-            'companyId.required' => 'id名称不能为空',
+            'suggestion.required' => '意见不能为空!',
+            'companyId.required' => 'id名称不能为空!',
         ];
     }
 

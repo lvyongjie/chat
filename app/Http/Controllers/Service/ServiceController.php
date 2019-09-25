@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blacklist;//黑名单表
-use App\Models\User;//用户表
+use App\Model\User;//用户表
 use Input;
 use App\Http\Requests\uploadBlackLists;
 class ServiceController extends Controller

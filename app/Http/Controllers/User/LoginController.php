@@ -20,7 +20,7 @@ use App\Models\Company;//企业表
 use App\Models\Feedback;//意见反馈表
 use App\Models\RobotExtraQa;//问答材料表
 use App\Models\SetUp;//系统编制表
-use App\Models\User;//用户表
+use App\Model\User;//用户表
 
 define('URI1', 'www.qiye.com');//企业
 define('URI2', 'www.guanliyuan.com');//管理员

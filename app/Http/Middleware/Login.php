@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\User;
+use App\Model\User;
 class Login
 {
     /**
@@ -16,11 +16,17 @@ class Login
     public function handle($request, Closure $next)
     {
         if(!session('key1')){
-             return redirect('/login');
+             $data = [
+               'Jurisdiction' => "请登录！",
+            ];
+            return response()->success(100,'请登录！',$data);
         }else{
             $user =User::find(session('key2'));
             if(session('key1')!=$user -> token){
-                return redirect('/login');
+                $data = [
+               'Jurisdiction' => "请登录！",//超级管理员
+            ];
+            return response()->success(100,'请登录！',$data);
             }else{
                 return $next($request);
             }
