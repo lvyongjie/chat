@@ -85,7 +85,7 @@ Route::delete('/admin/questions','Admin\AdminQuestionOperateController@deleteQue
 //更新图片
 Route::post('/picture/updatepicture','Picture\PictureUpdateController@updatePicture');
 //输出图片
-Route::GET('/picture/showpicture/{name}','Picture\PictureUpdateController@showPicture');//不能读取图片
+//Route::GET('/picture/showpicture/{name}','Picture\PictureUpdateController@showPicture');//不能读取图片
 
 //易康 3
 Route::group(['prefix' => 'admin'], function () {

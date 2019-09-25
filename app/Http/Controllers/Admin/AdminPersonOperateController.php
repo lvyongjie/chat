@@ -12,7 +12,7 @@ class AdminPersonOperateController extends Controller
 {
     public function searchPersonalUser(SearchPersonalUserRequest $request){
 
-           $result =(new User())->where('type','person')
+           $result =(new User())->select('id','cname','tel','created_at','status')->where('type','person')
                ->where('cname','=',$request->input('search_content'))
                ->orwhere('tel','=',$request->input('search_content'))
                ->first();
@@ -48,7 +48,7 @@ class AdminPersonOperateController extends Controller
             $user->cname = $request->input('person_name');
             $user->status = $request->input('person_state');
             $user->tel = $request->input('person_phone');
-            $user->password = $request->input('person_password');
+            $user->password = bcrypt($request->input('person_password'));
             $user->type = 'person';
 
             $localTime = $this->getLocalTime();
